@@ -48,4 +48,14 @@ public class CategoryDAOImp implements CategoryDAO {
 		return categories;
 	}
 
+	@Override
+	public Category get(int id) {
+		 
+		for(Category category: categories){
+			if(category.getId() == id)
+				return category;
+		}
+		return null;
+	}
+
 }
