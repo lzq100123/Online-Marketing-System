@@ -12,9 +12,7 @@ import net.lzq.marketingbackend.dto.Category;
 public class CategoryTestCase {
 	
 	private static AnnotationConfigApplicationContext context;
-	
 	private static CategoryDAO categoryDAO;
-	
 	private Category category;
 	
 	@BeforeClass

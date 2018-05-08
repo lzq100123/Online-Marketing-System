@@ -74,6 +74,9 @@
 
 		<!-- Custom JavaScript -->
 		<script src="${js}/myapp.js"></script>
+		
+		<!-- Datatable Plugin -->
+		<script src="${js}/jquery.dataTables.js"></script>
 
 	</div>
 </body>
