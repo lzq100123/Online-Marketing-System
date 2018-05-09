@@ -23,13 +23,21 @@
 
 <script>
 	window.menu = "${title}";
+	window.contextRoot = "${contextRoot}";
 </script>
 
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
+<!-- Font Awesome -->
+<link href="${css}/fontawesome-all.min.css" rel="stylesheet">
+
 <!-- Bootstrap Cerulean Theme -->
 <link href="${css}/bootstrap-cerulean-theme.css" rel="stylesheet">
+
+<!-- Bootstrap Datatables -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -59,6 +67,11 @@
 				<%@include file="contact.jsp"%>
 			</c:if>
 			
+			<!-- Load only when user clicks singleProduct -->
+			<c:if test="${userClickShowProduct == true }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
 			<!-- Load only when user clicks view products -->
 			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
 				<%@include file="listproducts.jsp"%>
@@ -77,6 +90,9 @@
 		
 		<!-- Datatable Plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
+		
+		<!-- Datatable Bootstrap Script -->
+		<script src="${js}/dataTables.bootstrap4.js"></script>
 
 	</div>
 </body>

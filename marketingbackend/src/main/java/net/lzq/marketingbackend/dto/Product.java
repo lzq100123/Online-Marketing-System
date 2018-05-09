@@ -25,7 +25,7 @@ public class Product {
 	@JsonIgnore
 	private String description;
 	@Column(name = "unit_price")
-	private double unitPprice;
+	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")
 	@JsonIgnore
@@ -80,10 +80,10 @@ public class Product {
 		this.description = description;
 	}
 	public double getUnitPprice() {
-		return unitPprice;
+		return unitPrice;
 	}
 	public void setUnitPprice(double unitPprice) {
-		this.unitPprice = unitPprice;
+		this.unitPrice = unitPprice;
 	}
 	public int getQuantity() {
 		return quantity;
