@@ -32,18 +32,32 @@
 			<hr />
 
 			<h4>
-				Price: <strong>&#36; ${product.unitPprice} /-</strong>
+				Price: <strong>&#36; ${product.unitPprice}</strong>
 			</h4>
 			<hr />
 
-			<h6>
-				Quantity Available: <strong>${product.quantity}</strong>
-			</h6>
+			<c:choose>
+				<c:when test="${product.quantity < 1}">
+					<h6>
+						Quantity Available: <span style="color:red;">Out of Stock!</span>
+					</h6>
+					<a href="javascript.void(0)" class="btn btn-success disabled"><span
+						class="fas fa-cart-arrow-down">Add To Cart</span></a>
+				</c:when>
+				<c:otherwise>
+					<h6>
+						Quantity Available: <strong>${product.quantity}</strong>
+					</h6>
+					<a href="${contextRoot}/cart/add/${product.id}/product"
+						class="btn btn-success"><span class="fas fa-cart-arrow-down">Add
+							To Cart</span></a>
+				</c:otherwise>
+			</c:choose>
 
-			<a href="${contextRoot}/cart/add/${product.id}/product"
-				class="btn btn-success"><span
-				class="fas fa-cart-arrow-down">Add To Cart</span></a> <a
-				href="${contextRoot}/show/all/products" class="btn btn-primary"><span class="fas fa-undo-alt">Back</span></a>
+			<a href="${contextRoot}/show/all/products" class="btn btn-primary"><span
+				class="fas fa-undo-alt">Back</span></a>
+
+
 
 		</div>
 

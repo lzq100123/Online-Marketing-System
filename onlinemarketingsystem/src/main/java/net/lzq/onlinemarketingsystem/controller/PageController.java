@@ -12,6 +12,7 @@ import net.lzq.marketingbackend.dao.CategoryDAO;
 import net.lzq.marketingbackend.dao.ProductDAO;
 import net.lzq.marketingbackend.dto.Category;
 import net.lzq.marketingbackend.dto.Product;
+import net.lzq.onlinemarketingsystem.exception.ProductNotFoundException;
 
 @Controller
 public class PageController {
@@ -96,10 +97,11 @@ public class PageController {
 	
 	//viewing a single product
 	@RequestMapping(value = "/show/{id}/product")
-	public ModelAndView showSingleProduct(@PathVariable int id){
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException{
 		ModelAndView mv = new ModelAndView("page");
 		
 		Product product = productDAO.get(id);
+		if(product == null) throw new ProductNotFoundException();
 		
 		//update product view count
 		product.setViews(product.getViews() + 1);
