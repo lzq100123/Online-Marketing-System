@@ -16,6 +16,7 @@
 		<mysql.version>5.1.46</mysql.version>
 		<hibernate.version>5.2.7.Final</hibernate.version>
 		<jackson.version>2.9.5</jackson.version>
+		<validation.version>2.0.1.Final</validation.version>
 	</properties>
 
 	<dependencies>
@@ -75,6 +76,22 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		
+		<!-- VALIDATION -->
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.4.1.Final</version>
+		</dependency>
+
 
 		<!-- DATABASE CONNECTION POOLING -->
 		<dependency>
