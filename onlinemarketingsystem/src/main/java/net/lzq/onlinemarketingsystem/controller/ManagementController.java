@@ -2,6 +2,7 @@ package net.lzq.onlinemarketingsystem.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ import net.lzq.marketingbackend.dao.CategoryDAO;
 import net.lzq.marketingbackend.dao.ProductDAO;
 import net.lzq.marketingbackend.dto.Category;
 import net.lzq.marketingbackend.dto.Product;
+import net.lzq.onlinemarketingsystem.util.FileUploadUtility;
+import net.lzq.onlinemarketingsystem.validator.ProductValidator;
 
 @Controller
 @RequestMapping("/manage")
@@ -58,7 +61,10 @@ public class ManagementController {
 	
 	//handling product submission
 	@RequestMapping(value = "/products", method=RequestMethod.POST)
-	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model){
+	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model,
+			HttpServletRequest request){
+		
+		new ProductValidator().validate(mProduct, results);
 		
 		//check if there are any errors
 		if(results.hasErrors()){
@@ -71,6 +77,11 @@ public class ManagementController {
 		
 		logger.info(mProduct.toString());
 		productDAO.add(mProduct);
+		
+		if(!mProduct.getFile().getOriginalFilename().equals("")){
+			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
+		}
+		
 		return "redirect:/manage/products?operation=product";
 	}
 	
