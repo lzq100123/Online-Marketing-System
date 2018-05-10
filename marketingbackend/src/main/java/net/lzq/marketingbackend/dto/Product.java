@@ -38,7 +38,6 @@ public class Product {
 	private double unitPprice;
 	private int quantity;
 	@Column(name = "is_active")
-	@JsonIgnore
 	private boolean isActive;
 	@Column(name = "category_id")
 	@JsonIgnore

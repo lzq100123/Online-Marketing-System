@@ -57,8 +57,6 @@
 								<th>Quantity Available</th>
 								<th></th>
 							</tr>
-							
-						
 						</thead>
 						
 						<tfoot>
@@ -70,8 +68,6 @@
 								<th>Quantity Available</th>
 								<th></th>
 							</tr>
-							
-						
 						</tfoot>
 					
 					</table>
