@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,12 +23,16 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String code;
+	@NotBlank(message = "please enter the product name!")
 	private String name;
+	@NotBlank(message = "please enter the brand name!")
 	private String brand;
 	@JsonIgnore
+	@NotBlank(message = "please enter the product description!")
 	private String description;
 	@Column(name = "unit_price")
-	private double unitPrice;
+	@Min(value = 1, message = "The price must be greater than 0!")
+	private double unitPprice;
 	private int quantity;
 	@Column(name = "is_active")
 	@JsonIgnore
@@ -80,10 +87,10 @@ public class Product {
 		this.description = description;
 	}
 	public double getUnitPprice() {
-		return unitPrice;
+		return unitPprice;
 	}
 	public void setUnitPprice(double unitPprice) {
-		this.unitPrice = unitPprice;
+		this.unitPprice = unitPprice;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -125,7 +132,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
-				+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", isActive=" + isActive
+				+ description + ", unitPrice=" + unitPprice + ", quantity=" + quantity + ", isActive=" + isActive
 				+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purchases=" + purchases + ", views="
 				+ views + "]";
 	}

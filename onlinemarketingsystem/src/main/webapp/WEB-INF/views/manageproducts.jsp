@@ -22,7 +22,7 @@
 							<label class="col-form-label col-md-4" for="name">Enter Product Name:</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="name" id="name" placeholder="Product Name" class="form-control"/>
-								<em class="help-block">Please Enter Product Name!</em> 
+								<sf:errors path="name" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -30,7 +30,7 @@
 							<label class="col-form-label col-md-4" for="brand">Enter Brand Name:</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="brand" id="brand" placeholder="Brand Name" class="form-control"/>
-								<em class="help-block">Please Enter Brand Name!</em> 
+								<sf:errors path="brand" cssClass="help-block" element="em"/> 
 							</div>
 						</div>
 						
@@ -38,7 +38,7 @@
 							<label class="col-form-label col-md-4" for="description">Product Description:</label>
 							<div class="col-md-8">
 								<sf:textarea type="text" path="description" id="description" placeholder="Product Description" class="form-control"/>
-								<em class="help-block">Please Enter Product Description!</em> 
+								<sf:errors path="description" cssClass="help-block" element="em"/> 
 							</div>
 						</div>
 						
@@ -46,7 +46,7 @@
 							<label class="col-form-label col-md-4" for="unitPrice">Enter Unit Price:</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="unitPprice" id="unitPrice" placeholder="Unit Price" class="form-control"/>
-								<em class="help-block">Please Enter Unit Price!</em> 
+								<sf:errors path="unitPprice" cssClass="help-block" element="em"/> 
 							</div>
 						</div>
 						
@@ -54,7 +54,6 @@
 							<label class="col-form-label col-md-4" for="quantity">Enter Product Quantity:</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="quantity" id="quantity" placeholder="Product Quantity" class="form-control"/>
-								<em class="help-block">Please Enter Brand Name!</em> 
 							</div>
 						</div>
 						
