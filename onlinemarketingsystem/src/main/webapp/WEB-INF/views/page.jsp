@@ -91,7 +91,10 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
-
+		
+		<!-- Jquery validation Script -->
+		<script src="${js}/jquery.validate.js"></script>
+		
 		<!-- Custom JavaScript -->
 		<script src="${js}/myapp.js"></script>
 		
