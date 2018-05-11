@@ -137,23 +137,7 @@
 							<th>Edit</th>
 						</tr>
 					</thead>
-					<!-- comment these codes for debug -->
-					<!-- <tbody>
-						<td>4</td>
-						<td>
-							<img src="${contextRoot}/resources/images/PRDABCXYZDEFX.jpg" class="adminDataTableImg"/>
-						</td>
-						<td>Dell Latitude E6510 here</td>
-						<td>dell</td>
-						<td>5</td>
-						<td>1099.00</td>
-						<td>
-							<label class="switch">
-								<input type="checkbox" checked="checked" value="4"'/>
-								<div class="slider round"></div>
-							</label>
-						</td>
-					</tbody> -->
+
 					<tfoot>
 						<tr>
 							<th>Id</th>
