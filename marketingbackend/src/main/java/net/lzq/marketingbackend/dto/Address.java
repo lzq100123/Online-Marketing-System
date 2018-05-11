@@ -31,6 +31,7 @@ public class Address {
 	private User user;
 	
 	
+	
 	/**
 	 * toString method for logging and debugging purpose
 	 */

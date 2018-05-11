@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Cart {
 	
+	
 	/**
 	 * Private field
 	 */

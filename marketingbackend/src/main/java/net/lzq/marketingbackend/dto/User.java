@@ -32,6 +32,7 @@ public class User {
 	private Cart cart;
 	
 	
+	
 	/**
 	 * toString method for logging and debugging purpose
 	 */

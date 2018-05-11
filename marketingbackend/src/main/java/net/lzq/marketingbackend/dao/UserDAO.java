@@ -15,4 +15,5 @@ public interface UserDAO {
 	Address getBillingAddress(User user);
 	List<Address> listShippingAddress(User user);
 	
+	
 }

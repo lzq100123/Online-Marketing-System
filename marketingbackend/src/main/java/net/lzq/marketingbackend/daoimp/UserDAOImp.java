@@ -80,6 +80,7 @@ public class UserDAOImp implements UserDAO{
 	public Address getBillingAddress(User user) {
 		
 		String selectQuery = "FROM Address WHERE user = :user AND billing = :billing";
+		
 		try {
 			
 			return sessionFactory.

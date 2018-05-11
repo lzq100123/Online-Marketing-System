@@ -60,6 +60,7 @@ public class HibernateConfig {
 		properties.put("hibernate.hbm2ddl.auto", "update");
 		
 		
+		
 		return properties;
 	}
 	

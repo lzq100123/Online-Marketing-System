@@ -9,7 +9,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import net.lzq.marketingbackend.dao.UserDAO;
 import net.lzq.marketingbackend.dto.Address;
 import net.lzq.marketingbackend.dto.Cart;
-import net.lzq.marketingbackend.dto.User;
+import net.lzq.marketingbackend.dto.User; 
+
 
 public class UserTestCase {
 
