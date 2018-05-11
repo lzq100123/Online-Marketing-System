@@ -95,33 +95,7 @@ $(function (){
 	}
 	
 	// Toggle switch prompt
-	$('.switch input[type="checkbox"]').on('change', function(){
-		
-		var checkbox = $(this);
-		var checked = checkbox.prop('checked');
-		var dMsg = (checked) ? 'You want to activiate the product' :
-							   'You want to deactiviate the product';
-		var value = checkbox.prop('value');
-		
-		bootbox.confirm({
-			size: 'medium',
-			title: 'Product Activiate & Deactivate',
-			message: dMsg,
-			callback: function(confirmed){
-				if(confirmed){
-					console.log(value);
-					bootbox.alert({
-						size: "medium",
-						title: "Information",
-						message: 'You are going to perform operation on product ' + value
-					})
-				}else{
-					checkbox.prop('checked', !checked);
-				}
-			}
-		
-		})
-	})
+	
 	
 	/**
 	 *  Data table for admin
@@ -200,7 +174,41 @@ $(function (){
 								return str;
 		        			}
 		        		}
-			        ]
+			        ],
+			        initComplete: function(){
+			        	var api = this.api();
+			        	api.$('.switch input[type="checkbox"]').on('change', function(){
+			        		
+			        		var checkbox = $(this);
+			        		var checked = checkbox.prop('checked');
+			        		var dMsg = (checked) ? 'You want to activate the product' :
+			        							   'You want to deactivate the product';
+			        		var value = checkbox.prop('value');
+			        		
+			        		bootbox.confirm({
+			        			size: 'medium',
+			        			title: 'Product Activate & Deactivate',
+			        			message: dMsg,
+			        			callback: function(confirmed){
+			        				if(confirmed){
+			        					console.log(value);
+			        					var activationUrl = window.contextRoot + '/manage/product/' + value + '/activation';
+			        					$.post(activationUrl, function(data){
+			        						bootbox.alert({
+				        						size: "medium",
+				        						title: "Information",
+				        						message: data
+				        					});
+			        					});
+			        					
+			        				}else{
+			        					checkbox.prop('checked', !checked);
+			        				}
+			        			}
+			        		
+			        		})
+			        	})
+			        }
 		});
 	}
 	
