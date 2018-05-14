@@ -16,7 +16,6 @@
    
    
    <context:component-scan base-package="net.lzq.onlinemarketingsystem"/>
-   <context:component-scan base-package="net.lzq.marketingbackend"/>
    
    <bean id = "ViewResolver"
    		 class = "org.springframework.web.servlet.view.InternalResourceViewResolver">

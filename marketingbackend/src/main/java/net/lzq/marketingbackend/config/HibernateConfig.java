@@ -25,7 +25,7 @@ public class HibernateConfig {
 	private final static String DATABASE_USERNME = "root";
 	private final static String DATABASE_PASSWORD = "123456";
 	
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource() {
 		BasicDataSource datasource = new BasicDataSource();
 		

@@ -39,7 +39,7 @@ public class User implements Serializable{
 	private String role;
 	@NotBlank(message="please enter password")
 	private String password;
-	private boolean enable = true;
+	private boolean enabled = true;
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Cart cart;
 	
@@ -63,7 +63,7 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", contactNumber=" + contactNumber + ", role=" + role + ", password=" + password + ", enable="
-				+ enable + "]";
+				+ enabled + "]";
 	}
 	/**
 	 * Getters and setters
@@ -111,10 +111,10 @@ public class User implements Serializable{
 		this.password = password;
 	}
 	public boolean isEnable() {
-		return enable;
+		return enabled;
 	}
 	public void setEnable(boolean enable) {
-		this.enable = enable;
+		this.enabled = enable;
 	}
 	public Cart getCart() {
 		return cart;
