@@ -1,5 +1,7 @@
 package net.lzq.marketingbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "user_detail")
-public class User {
+public class User implements Serializable{
+ 
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Private field
 	 */
@@ -19,19 +26,35 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "first_name")
+	@NotBlank(message="please enter first name")
 	private String firstName;
 	@Column(name = "last_name")
+	@NotBlank(message="please enter last name")
 	private String lastName;
+	@NotBlank(message="please enter email address")
 	private String email;
 	@Column(name = "contact_number")
+	@NotBlank(message="please enter contact number")
 	private String contactNumber;
 	private String role;
+	@NotBlank(message="please enter password")
 	private String password;
-	private boolean enable;
+	private boolean enable = true;
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Cart cart;
 	
+	/**
+	 * confirm password transient field
+	 */
+	@Transient
+	private String confirmPassword;
 	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	
 	/**
 	 * toString method for logging and debugging purpose
@@ -99,5 +122,7 @@ public class User {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+
+	
 	
 }

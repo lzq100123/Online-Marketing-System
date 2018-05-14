@@ -1,5 +1,7 @@
 package net.lzq.marketingbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Address {
+import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+public class Address implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Private field
 	 */
@@ -17,13 +22,19 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "address_line_one")
+	@NotBlank(message="please enter address line one")
 	private String addressLineOne;
 	@Column(name = "address_line_two")
+	@NotBlank(message="please enter address line two")
 	private String addressLineTwo;
+	@NotBlank(message="please enter city name")
 	private String city;
+	@NotBlank(message="please enter state name")
 	private String state;
+	@NotBlank(message="please enter country name")
 	private String country;
 	@Column(name = "postal_code")
+	@NotBlank(message="please enter postal code")
 	private String postalCode;
 	private boolean billing;
 	private boolean shipping;

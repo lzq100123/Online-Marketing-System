@@ -20,6 +20,15 @@
 				<li id="contact" class="nav-item"><a class="nav-link"
 					href="${contextRoot}/contact">Contact</a></li>
 			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li id="register" class="nav-item">
+					<a class= "nav-link" href="${contextRoot}/register">Sign Up</a>
+				</li>
+				<li id="login" class="nav-item">
+					<a class= "nav-link" href="${contextRoot}/login">Sign In</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </nav>
