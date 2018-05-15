@@ -82,7 +82,7 @@
 						<div class="card bg-primary">
 
 							<div class="card-header">
-								<h4>Sign Up</h4>
+								<h4>Sign In</h4>
 							</div>
 
 							<div class="card-body bg-light">

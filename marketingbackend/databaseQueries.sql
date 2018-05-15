@@ -63,3 +63,18 @@ INSERT INTO product (code, name, brand, description, unit_price, quantity, is_ac
 VALUES ('PRDMNO123PQRX', ' Macbook Pro', 'apple', 'This is one of the best laptops available in the market right now!', 899, 3, true, 2, 2, 0, 0 );
 INSERT INTO product (code, name, brand, description, unit_price, quantity, is_active, category_id, supplier_id, purchases, views)
 VALUES ('PRDABCXYZDEFX', 'Dell Latitude E6510', 'dell', 'This is one of the best laptop series from dell that can be used!', 1099, 5, true, 2, 3, 0, 0 );
+
+
+CREATE TABLE cartline (
+	id INT AUTO_INCREMENT NOT NULL,
+	cart_id INT,
+	product_id INT,
+	product_count INT,
+	total DECIMAL(10,2),
+	buying_price DECIMAL(10,2),
+	is_available BOOLEAN NOT NULL,
+
+	CONSTRAINT pk_cartline_id PRIMARY KEY(id),
+	CONSTRAINT fk_cartline_product_id FOREIGN KEY (product_id) REFERENCES product(id),
+	CONSTRAINT fk_cartline_cart_id FOREIGN KEY (cart_id) REFERENCES cart(id)
+);

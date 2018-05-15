@@ -43,14 +43,14 @@ public class RegisterHandler {
 		String transitionValue= "success";
 		User user = model.getUser();
 		
-		//encode password
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
 		if(user.getRole().equals("USER")){
 			Cart cart = new Cart();
 			cart.setUser(user);
 			user.setCart(cart);
 		}
+		
+		//encode password
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		//save the user
 		userDAO.addUser(user);
