@@ -3,6 +3,7 @@ package net.lzq.onlinemarketingsystem.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.lzq.marketingbackend.dao.UserDAO;
@@ -16,6 +17,9 @@ public class RegisterHandler {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	public RegisterModel init() {
 
@@ -38,6 +42,9 @@ public class RegisterHandler {
 		
 		String transitionValue= "success";
 		User user = model.getUser();
+		
+		//encode password
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		if(user.getRole().equals("USER")){
 			Cart cart = new Cart();

@@ -87,8 +87,15 @@ $(function (){
 								
 								if(row.quantity < 1)
 									str += '<a href="javascript.void(0)" class="btn btn-success"><span class="fas fa-cart-arrow-down"></span></a>';
-								else
-									str += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"><span class="fas fa-cart-arrow-down"></span></a>';
+								else{
+									
+									if(userRole == 'ADMIN'){
+										str += '<a href="' + window.contextRoot + '/manage/' + data + '/product" class="btn btn-warning"><span class="fas fa-pencil-alt"></span></a>';
+									}else{
+										str += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"><span class="fas fa-cart-arrow-down"></span></a>';
+									}
+								}
+								
 								return str;
 			        		}
 			        	}

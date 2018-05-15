@@ -35,7 +35,8 @@
 				Price: <strong>&#36; ${product.unitPprice}</strong>
 			</h4>
 			<hr />
-
+			
+			<security:authorize access="hasAuthority('USER')">
 			<c:choose>
 				<c:when test="${product.quantity < 1}">
 					<h6>
@@ -53,7 +54,12 @@
 							To Cart</span></a>
 				</c:otherwise>
 			</c:choose>
-
+			</security:authorize>
+			
+			<security:authorize access="hasAuthority('ADMIN')">
+				<a href="${contextRoot}/manage/${product.id}/product"
+						class="btn btn-warning"><span class="fas fa-pencil-alt">Edit</span></a>
+			</security:authorize>
 			<a href="${contextRoot}/show/all/products" class="btn btn-primary"><span
 				class="fas fa-undo-alt">Back</span></a>
 
