@@ -13,7 +13,7 @@ import net.lzq.marketingbackend.dto.CartLine;
 
 @Repository("cartLineDAO")
 @Transactional
-public class CartLineImp implements CartLineDAO{
+public class CartLineDAOImp implements CartLineDAO{
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -68,7 +68,7 @@ public class CartLineImp implements CartLineDAO{
 	@Override
 	public List<CartLine> list(int cartId) {
 
-		String query = "FROM cartline WHERE cartId = :cartId";
+		String query = "FROM CartLine WHERE cartId = :cartId";
 		
 		return sessionFactory.
 				getCurrentSession().
@@ -80,13 +80,13 @@ public class CartLineImp implements CartLineDAO{
 	@Override
 	public List<CartLine> listAvailable(int cartId) {
 		
-		String query = "FROM cartline WHERE cartId = :cartId AND isAvailable = :isAvailable";
+		String query = "FROM CartLine WHERE cartId = :cartId AND available = :available";
 
 		return sessionFactory.
 				getCurrentSession().
 				 createQuery(query, CartLine.class).
 				  setParameter("cartId", cartId).
-				  setParameter("isAvailable", true).
+				  setParameter("available", true).
 				   getResultList();
 	}
 
@@ -94,7 +94,7 @@ public class CartLineImp implements CartLineDAO{
 	public CartLine getByCartAndProduct(int cartId, int productId) {
 
 		
-		String query = "FROM cartline WHERE cartId = :cartId AND product.id = :productId";
+		String query = "FROM CartLine WHERE cartId = :cartId AND product.id = :productId";
 		
 		try {
 			return sessionFactory.

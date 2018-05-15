@@ -32,7 +32,7 @@ public class CartLine implements Serializable{
 	@Column(name = "buying_price")
 	private double buyingPrice;
 	@Column(name = "is_available")
-	private boolean isAvailable;
+	private boolean available = true;
 	
 	/**
 	 * 
@@ -68,23 +68,22 @@ public class CartLine implements Serializable{
 	public void setBuyingPrice(double buyingPrice) {
 		this.buyingPrice = buyingPrice;
 	}
-	public boolean isAvailable() {
-		return isAvailable;
-	}
-	public void setAvailable(boolean isAvailable) {
-		this.isAvailable = isAvailable;
-	}
 	public Product getProduct() {
 		return product;
 	}
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
+	public boolean isAvailable() {
+		return available;
+	}
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
 	@Override
 	public String toString() {
 		return "CartLine [id=" + id + ", cartId=" + cartId + ", product=" + product + ", productCount=" + productCount
-				+ ", total=" + total + ", buyingPrice=" + buyingPrice + ", isAvailable=" + isAvailable + "]";
+				+ ", total=" + total + ", buyingPrice=" + buyingPrice + ", available=" + available + "]";
 	}
 	
 	
