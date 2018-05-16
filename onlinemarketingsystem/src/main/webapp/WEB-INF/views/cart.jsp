@@ -68,7 +68,7 @@
 						<td class="text-center"><strong>Total &#36; ${userModel.cart.grandTotal}</strong></td>
 					</tr>
 					<tr>
-						<td><a href="#" class="btn btn-warning"><span
+						<td><a href="${contextRoot}/show/all/products" class="btn btn-warning"><span
 								class="fa fa-angle-left"></span> Continue Shopping</a></td>
 						<td colspan="2" class="hidden-xs"></td>
 						<td class="hidden-xs text-center"><strong>Total &#36; ${userModel.cart.grandTotal}</strong></td>

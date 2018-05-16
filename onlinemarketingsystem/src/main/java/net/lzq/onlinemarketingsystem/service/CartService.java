@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.lzq.marketingbackend.dao.CartLineDAO;
+import net.lzq.marketingbackend.dao.ProductDAO;
 import net.lzq.marketingbackend.dto.Cart;
 import net.lzq.marketingbackend.dto.CartLine;
 import net.lzq.marketingbackend.dto.Product;
@@ -18,6 +19,9 @@ public class CartService {
 	
 	@Autowired
 	private CartLineDAO cartLineDAO;
+	
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@Autowired
 	private HttpSession session;
@@ -33,7 +37,7 @@ public class CartService {
 		return cartLineDAO.list(this.getCart().getId());
 	}
 
-	public String updateCartLine(int cartLineId, int count) {
+	public String manageCartLine(int cartLineId, int count) {
 		
 		//fetch the cart line
 		CartLine cartLine = cartLineDAO.get(cartLineId);
@@ -47,9 +51,9 @@ public class CartService {
 			
 			double oldTotal = cartLine.getTotal();
 			
-			if(product.getQuantity() <= count){
+			if(product.getQuantity() < count){
 				
-				count = product.getQuantity();
+				return "result=unavailable";
 			}
 			
 			cartLine.setProductCount(count);
@@ -88,4 +92,50 @@ public class CartService {
 		}
 		
 	}
+
+	public String addCartLine(int productId) {
+		
+		String response = null;
+		
+		Cart cart = this.getCart();
+		
+		CartLine cartLine = cartLineDAO.getByCartAndProduct(cart.getId(), productId);
+		
+		if(cartLine == null){
+			//add new cart line
+			cartLine = new CartLine();
+			
+			//fetch the product
+			Product product = productDAO.get(productId);
+			
+			cartLine.setCartId(cart.getId());
+			
+			cartLine.setProduct(product);
+			cartLine.setBuyingPrice(product.getUnitPprice());
+			cartLine.setProductCount(1);
+			cartLine.setTotal(product.getUnitPprice());
+			cartLine.setAvailable(true);
+			
+			cartLineDAO.add(cartLine);
+			
+			cart.setCartLines(cart.getCartLines() + 1);
+			cart.setGrandTotal(cart.getGrandTotal() + cartLine.getTotal());
+			cartLineDAO.update(cartLine);
+			
+			response = "result=added";
+		}else{
+			
+			//check if the cart line has reached the maximum count
+			if(cartLine.getProductCount() < 3 ){
+				
+				response = this.manageCartLine(cartLine.getId(), cartLine.getProductCount() + 1);
+			}else{
+				response = "result=maximum";
+			}
+			
+		}
+		
+		return response;
+	}
+
 }
