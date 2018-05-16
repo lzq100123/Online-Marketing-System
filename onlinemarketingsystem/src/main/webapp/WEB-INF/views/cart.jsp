@@ -1,4 +1,12 @@
 <div class="container">
+	<c:if test="${not empty message }">
+		<div class="alert alert-info">
+			<h3 class="text-center">
+				${message}
+			</h3>
+		</div>
+	</c:if>
+
 	<c:choose>
 		<c:when test="${not empty cartLines}">
 			<table id="cart" class="table table-hover table-condensed">
@@ -46,9 +54,9 @@
 								<button type="button" name="refreshCart" value="${cartLine.id}" class="btn btn-info btn-sm">
 									<span class="fas fa-sync-alt"></span>
 								</button>
-								<button class="btn btn-danger btn-sm">
+								<a href="${contextRoot}/cart/${cartLine.id}/delete" class="btn btn-danger btn-sm">
 									<span class="fas fa-trash-alt"></span>
-								</button>
+								</a>
 							</td>
 						</tr>
 					</c:forEach>
