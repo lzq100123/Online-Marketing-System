@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Online-Marketing-System
-
-This is a Java web application with Angular.js, Springframework, hibernate and bootstrap
-=======
 # Online-Marketing-System
 
 This is a Java web application with Springframework, Hibernate, Bootstrap and Angular.js
@@ -38,4 +33,3 @@ Customer could view the detail of products and purchase them
 4. Password encoder is provided
 ![image](https://user-images.githubusercontent.com/21145463/40264997-3baa289e-5af5-11e8-81b4-5a9644d494d8.png)
 
->>>>>>> refs/remotes/origin/master
