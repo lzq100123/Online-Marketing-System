@@ -108,4 +108,17 @@ public class ProductDAOImp implements ProductDAO{
 								.getResultList();
 	}
 
+	@Override
+	public List<Product> getProductByParam(String param, int count) {
+		
+		String query = "FROM Product WHERE isActive = true ORDER BY " + param + " DESC";
+		
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(query)
+				.setFirstResult(0)
+				.setMaxResults(count)
+				.getResultList();
+	}
+
 }

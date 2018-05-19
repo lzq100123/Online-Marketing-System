@@ -36,4 +36,16 @@ public class JasonDataController {
 		return productDAO.listActiveProductsByCategory(id);
 	}
 	
+	@RequestMapping("/mv/products")
+	@ResponseBody
+	public List<Product> getMostViewedProducts(){
+		return productDAO.getProductByParam("views", 5);
+	}
+	
+	@RequestMapping("/mp/products")
+	@ResponseBody
+	public List<Product> getMostPurchasedProducts(){
+		return productDAO.getProductByParam("purchases", 5);
+	}
+	
 }	

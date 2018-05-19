@@ -156,3 +156,8 @@ input:checked + .slider:before {
 .unavailable {
 	color:red;
 }
+
+.landingImg {
+	width: auto;
+	height : 180px;
+}
