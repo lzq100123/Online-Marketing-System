@@ -39,13 +39,13 @@ public class JasonDataController {
 	@RequestMapping("/mv/products")
 	@ResponseBody
 	public List<Product> getMostViewedProducts(){
-		return productDAO.getProductByParam("views", 5);
+		return productDAO.getProductByParam("views", 6);
 	}
 	
 	@RequestMapping("/mp/products")
 	@ResponseBody
 	public List<Product> getMostPurchasedProducts(){
-		return productDAO.getProductByParam("purchases", 5);
+		return productDAO.getProductByParam("purchases", 6);
 	}
 	
 }	
