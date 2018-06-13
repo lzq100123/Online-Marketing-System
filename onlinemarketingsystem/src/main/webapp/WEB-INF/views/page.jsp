@@ -64,14 +64,19 @@
 				<%@include file="about.jsp"%>
 			</c:if>
 
-			<!-- Load only when user clicks contact -->
-			<c:if test="${userClickContact == true }">
-				<%@include file="contact.jsp"%>
+			<!-- Load only when user clicks chat room -->
+			<c:if test="${userClickChatroom == true }">
+				<%@include file="chatroom.jsp"%>
 			</c:if>
 			
 			<!-- Load only when user clicks singleProduct -->
 			<c:if test="${userClickShowProduct == true }">
 				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
+			<!-- Load only when user clicks singleChatroom -->
+			<c:if test="${userClickShowChatroom == true }">
+				<%@include file="singlechatroom.jsp"%>
 			</c:if>
 			
 			<!-- Load only when user clicks view products -->
@@ -113,7 +118,13 @@
 		
 		<!-- BootBox Script -->
 		<script src="${js}/bootbox.min.js"></script>
-
+		
+		<!-- SockJS Script-->
+		<script src="${js}/sockjs.min.js"></script>
+		
+		<!-- Stomp Script-->
+		<script src="${js}/stomp.min.js"></script>
+		
 	</div>
 </body>
 

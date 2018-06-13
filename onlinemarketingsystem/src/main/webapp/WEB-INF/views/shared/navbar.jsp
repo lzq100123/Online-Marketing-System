@@ -21,8 +21,8 @@
 				<li id="manageProducts" class="nav-item"><a class="nav-link"
 					href="${contextRoot}/manage/products">Manage Products</a></li>
 				</security:authorize>
-				<li id="contact" class="nav-item"><a class="nav-link"
-					href="${contextRoot}/contact">Contact</a></li>
+				<li id="chat" class="nav-item"><a class="nav-link"
+					href="${contextRoot}/chatroom">ChatRoom</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">

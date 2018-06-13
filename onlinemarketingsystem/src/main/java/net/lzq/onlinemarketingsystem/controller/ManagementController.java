@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.lzq.marketingbackend.dao.CategoryDAO;
+import net.lzq.marketingbackend.dao.ChatroomDAO;
 import net.lzq.marketingbackend.dao.ProductDAO;
 import net.lzq.marketingbackend.dto.Category;
+import net.lzq.marketingbackend.dto.Chatroom;
 import net.lzq.marketingbackend.dto.Product;
 import net.lzq.onlinemarketingsystem.util.FileUploadUtility;
 import net.lzq.onlinemarketingsystem.validator.ProductValidator;
@@ -35,6 +37,9 @@ public class ManagementController {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private ChatroomDAO chatroomDAO;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 	

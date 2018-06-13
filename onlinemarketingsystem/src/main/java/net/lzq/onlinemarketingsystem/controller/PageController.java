@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.lzq.marketingbackend.dao.CategoryDAO;
+import net.lzq.marketingbackend.dao.ChatroomDAO;
 import net.lzq.marketingbackend.dao.ProductDAO;
 import net.lzq.marketingbackend.dto.Category;
+import net.lzq.marketingbackend.dto.Chatroom;
 import net.lzq.marketingbackend.dto.Product;
 import net.lzq.onlinemarketingsystem.exception.ProductNotFoundException;
 
@@ -30,6 +32,9 @@ public class PageController {
 	private CategoryDAO categoryDAO;
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private ChatroomDAO chatroomDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -55,12 +60,12 @@ public class PageController {
 		return mv;
 	}
 	
-	@RequestMapping("/contact")
-	public ModelAndView contact(){
+	@RequestMapping("/chatroom")
+	public ModelAndView chatroom(){
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "Contact Us");
-		mv.addObject("userClickContact", true);
+		mv.addObject("title", "Chat Room");
+		mv.addObject("userClickChatroom", true);
 		return mv;
 	}
 	
@@ -122,6 +127,24 @@ public class PageController {
 		
 		return mv;
 	}
+	
+	//viewing a single chatroom
+		@RequestMapping(value = "/show/{id}/chatroom")
+		public ModelAndView showSingleChatroom(@PathVariable int id) throws ProductNotFoundException{
+			ModelAndView mv = new ModelAndView("page");
+			
+			Chatroom chatroom = chatroomDAO.get(id);
+			if(chatroom == null) throw new ProductNotFoundException();
+			
+			mv.addObject("title",chatroom.getName());
+			mv.addObject("chatroom", chatroom);
+			mv.addObject("userClickShowChatroom",true);
+			
+			
+			return mv;
+		}
+	
+	
 	/*mapping to flow id*/
 	@RequestMapping("/register")
 	public ModelAndView register(){
